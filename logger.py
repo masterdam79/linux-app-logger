@@ -27,17 +27,21 @@ def get_timestamp():
 
 
 with daemon.DaemonContext():
+    lastlog = ""
     while True:
         try:
             if is_active():
                 app, title = get_active_program()
+                activelog = get_active_program()
                 log_line = '%s\t%-30s\t%s\n' % (get_timestamp(), app, title)
 
                 if log_file == '-':
                     print log_line,
                 else:
-                    with open(log_file, 'a') as f:
-                        f.write(log_line)
+                    if activelog != lastlog:
+                        with open(log_file, 'a') as f:
+                            f.write(log_line)
+                            lastlog = get_active_program()
         except Exception:
             _, _, tb = sys.exc_info()
             while tb.tb_next:
