@@ -1,12 +1,10 @@
 #!/bin/sh
 currentDateShort=`date "+%Y%m%d"`
-user="r.reijmers"
 
-if [ ! -d /home/${user}/LOG ]
+if [ ! -d $HOME/LOG ]
 then
-	mkdir /home/${user}/LOG
+	mkdir $HOME/LOG
 fi
 
-cd /home/${user}/Git/Hub/linux-app-logger
-./logger.py /home/${user}/LOG/${currentDateShort}.log 1 2>/home/${user}/LOG/q
-
+cd $HOME/Git/Hub/linux-app-logger
+./logger.py $HOME/LOG/${currentDateShort}.log 1 2>$HOME/LOG/q
