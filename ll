@@ -1,5 +1,5 @@
 #!/bin/sh
-currentDateShort=`date "+%Y%m%d"`
+currentDateShort=$(date "+%Y%m%d")
 
 if [ ! -d $HOME/LOG ]
 then
@@ -7,4 +7,4 @@ then
 fi
 
 cd $HOME/Git/Hub/linux-app-logger
-./logger.py $HOME/LOG/${currentDateShort}.log 1 2>$HOME/LOG/q
+./logger.py $HOME/LOG/${currentDateShort}-$(hostname -s).log 1 2>$HOME/LOG/q
